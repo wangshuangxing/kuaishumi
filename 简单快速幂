@@ -1,0 +1,47 @@
+/*
+
+由于是二进制，很自然地想到用位运算这个强大的工具：&和>>     
+&运算通常用于二进制取位操作，例如一个数 & 1 的结果就是取二进制的最末位。
+还可以判断奇偶x&1==0为偶，x&1==1为奇。
+
+其中要理解base*=base这一步：因为 base*base==base2，下一步再乘，就是base2*base2==base4，
+然后同理  base4*base4=base8，由此可以做到base-->base2-->base4-->base8-->base16-->base32.......指数正是 2^i ，
+再看上面的例子，a¹¹= a1*a2*a8，这三项就可以完美解决了，快速幂就是这样。
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int poww(int a,int b)
+{
+  long long ans=1;
+  long long bace =a;
+  while(b)
+  {
+    if(b&1!=0)
+    ans=ans*bace;
+    bace * = bace;
+    b>>=1;
+  }
+  return ans;
+}
