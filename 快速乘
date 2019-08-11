@@ -1,0 +1,26 @@
+
+非常优秀的 O(1) 快速乘
+
+inline ll ksc(ll x,ll y,ll p){
+    ll z=(ld)x/p*y;
+    ll res=(ull)x*y-(ull)z*p;
+    return (res+p)%p;
+}
+// ll 表示 long long
+// ld 表示 long double
+// ull 表示 usigned long long
+// 一种自动溢出的数据类型（存满了就会自动变为0）
+
+
+
+
+复杂度为 O(log) 的快速乘：
+
+inline ll ksc(ll x,ll y,ll p){//计算x乘y的积
+    ll res=0;//加法初始化
+    while(y){
+        if(y&1)res=(res+x)%p;//模仿二进制
+        x=(x<<1)%p; y>>=1;//将x不断乘2达到二进制
+    }return res;
+}
+// ll 表示 long long
